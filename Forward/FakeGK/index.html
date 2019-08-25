@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>欢迎来到假的高考！</title>
+        <meta charset="UTF-8">
+        <link href="./files/index.css" rel="stylesheet" type="text/css">
+        <script>
+            function jump() {
+                location.href = "result.html?" +
+                    "TestID=" + document.getElementById("TestID").value +
+                    "&ID=" + document.getElementById("ID").value +
+                    "&Name=" + document.getElementById("Name").value +
+                    "&isText=" + document.getElementById("isText").checked +
+                    "&C=" + document.getElementById("C").value +
+                    "&M=" + document.getElementById("M").value +
+                    "&E=" + document.getElementById("E").value +
+                    "&Z=" + document.getElementById("Z").value +
+                    "&S=" +  document.getElementById("S").value;
+            }
+
+            function customText() {
+                if(document.getElementById("isText").checked) {
+				    var inputs = document.getElementsByName("Subject");
+				    for(var i = 0; i < inputs.length; i++) {
+                        inputs[i].type = "text";
+				    }
+                    inputs[0].value = "错误：成绩过高";
+                    inputs[1].value = "ERROR:NUMBER_OUT_OF_RANGE";
+                    inputs[2].value = "NumberOutOfRangeException";
+                    inputs[3].value = "{{{ ERROR }}}";
+                    inputs[4].value = "w辻绮@Y欼+?带";
+
+                    document.getElementById("SumP").style.display = "block";
+                } else {
+				    var inputs = document.getElementsByName("Subject");
+				    for(var i = 0; i < inputs.length; i++) {
+                        inputs[i].type = "number";
+                        inputs[i].value = 0;
+                    }
+				    document.getElementById("SumP").style.display = "none";
+                }
+            }
+
+        </script>
+    </head>
+
+	<body>
+        <h1 style="color:#66CCFF">假的高考</h1>
+        <hr class="hr-top">
+        <h3>在下面输入你的信息与想要的高考成绩</h3>
+        <div>
+            <p>你考生号：<input type="text" id="TestID" placeholder="19130XXXXXXXXX"></p>
+            <p>身份证号：<input type="text" id="ID" placeholder="130XXXXXXXXXXXXXXX"/></p>
+            <p>你的姓名：<input type="text" id="Name" placeholder="蔡徐土申"/></p>
+        </div>
+        
+        <div>
+            <p>如果你想让成绩显示自定义文字，请勾选：<input type="checkBox" id="isText" onclick="customText()"></p>
+            <p>语文：<input name="Subject" type="number" id="C" /></p>
+            <p>数学：<input name="Subject" type="number" id="M" /></p>
+            <p>英语：<input name="Subject" type="number" id="E" /></p>
+            <p>综合：<input name="Subject" type="number" id="Z" /></p>
+            <p id="SumP" style=display:none>
+                总分：<input name="Subject" type="text" id="S" />
+            </p>
+        </div>
+        
+		<p><input type="button" value="生成我自己的成绩单" onclick="jump()"></p>
+    
+        <div class="about">
+            <hr class="hr-foot">
+            <div>仅供河北考生使用（因为河北的我只有河北的页面文件）</div>
+            <div>本页面仅模拟真实查询效果，并不链接河北省教育考试院</div>
+            <hr class="hr-foot">
+        </div>
+        
+    </body>
+</html>
